@@ -1,6 +1,5 @@
 package com.edufelizardo1.forum.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
