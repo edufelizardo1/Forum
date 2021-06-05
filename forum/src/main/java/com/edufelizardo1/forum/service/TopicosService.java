@@ -15,8 +15,13 @@ public class TopicosService {
 	@Autowired
 	private TopicoRepository topicoRepository;
 
-	public List<TopicoDTO> listar() {
-		List<Topico> topico = topicoRepository.findAll();
-		return TopicoDTO.converter(topico);
+	public List<TopicoDTO> listar(String nomeCurso) {
+		if(nomeCurso == null) {
+			List<Topico> topico = topicoRepository.findAll();
+			return TopicoDTO.converter(topico);
+		} else {
+			List<Topico> topico = topicoRepository.findByCursoNome(nomeCurso);
+			return TopicoDTO.converter(topico);
+		}
 	}
 }

@@ -1,6 +1,5 @@
 package com.edufelizardo1.forum.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class TopicosController {
 	private TopicosService topicosService;
 	
 	@GetMapping
-	public List<TopicoDTO> lista() {
-		return topicosService.listar();
+	public List<TopicoDTO> listarNome(String nomeCurso) {
+		return topicosService.listar(nomeCurso);
 	}
 }
