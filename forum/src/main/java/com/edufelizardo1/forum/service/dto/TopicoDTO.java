@@ -1,4 +1,4 @@
-package com.edufelizardo1.forum.controller.dto;
+package com.edufelizardo1.forum.service.dto;
 
 import java.time.LocalDateTime;
 import java.util.List;
