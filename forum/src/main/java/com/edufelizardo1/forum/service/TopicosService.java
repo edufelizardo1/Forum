@@ -11,6 +11,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.edufelizardo1.forum.model.Topico;
 import com.edufelizardo1.forum.repository.CursoRepository;
 import com.edufelizardo1.forum.repository.TopicoRepository;
+import com.edufelizardo1.forum.service.dto.DetalhesDoTopicoDTO;
 import com.edufelizardo1.forum.service.dto.TopicoDTO;
 import com.edufelizardo1.forum.service.form.TopicoForm;
 
@@ -39,5 +40,11 @@ public class TopicosService {
 		topicoRepository.save(topico);
 		URI uri = uriBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();
 		return ResponseEntity.created(uri).body(new TopicoDTO(topico));
+	}
+	
+	@SuppressWarnings("deprecation")
+	public DetalhesDoTopicoDTO detalhar(Long id) {
+		Topico topico = topicoRepository.getOne(id);
+		return new DetalhesDoTopicoDTO(topico);
 	}
 }
