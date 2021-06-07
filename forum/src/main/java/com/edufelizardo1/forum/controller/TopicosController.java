@@ -6,6 +6,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +36,7 @@ public class TopicosController {
 	}
 
 	@PostMapping
+	@Transactional
 	public ResponseEntity<TopicoDTO> cadastrar(@RequestBody @Valid TopicoForm topicoForm,
 			UriComponentsBuilder uriBuilder) {
 		return topicosService.cadastrar(topicoForm, uriBuilder);
@@ -45,7 +48,14 @@ public class TopicosController {
 	}
 
 	@PutMapping(value = "/{id}")
+	@Transactional
 	public ResponseEntity<TopicoDTO> atualizar(@PathVariable Long id, @RequestBody @Valid AtualizacaoTopicoForm form) {
 		return topicosService.atualizar(id, form);
+	}
+	
+	@DeleteMapping(value = "/{id}")
+	@Transactional
+	public ResponseEntity<?> remover(@PathVariable Long id) {
+		return topicosService.remover(id);
 	}
 }

@@ -59,4 +59,15 @@ public class TopicosService {
 		
 		return ResponseEntity.notFound().build();
 	}
+	
+	
+	public ResponseEntity<?> remover(Long id) {
+		Optional<Topico> optional = topicoRepository.findById(id);
+		if (optional.isPresent()) {
+			topicoRepository.deleteById(id);
+			return ResponseEntity.ok().build();
+		}
+		
+		return ResponseEntity.notFound().build();
+	}
 }
