@@ -1,13 +1,21 @@
 package com.edufelizardo1.forum.service.form;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.edufelizardo1.forum.model.Curso;
 import com.edufelizardo1.forum.model.Topico;
 import com.edufelizardo1.forum.repository.CursoRepository;
 
 public class TopicoForm {
 
+	@NotNull @NotEmpty @Length(min = 5)
 	private String titulo;
+	@NotNull @NotEmpty @Length(min = 10)
 	private String mensagem;
+	@NotNull @NotEmpty
 	private String nomeCurso;
 	
 	
