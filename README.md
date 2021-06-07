@@ -1,4 +1,4 @@
 # Forum
 Spring Boot API REST: Forum
 
-https://img.shields.io/static/v1?label=<LABEL>&message=<MESSAGE>&color=<COLOR>&style=<STYLE>&logo=<LOGO>
+> Status do Projeto: Concluido :heavy_check_mark:
