@@ -2,6 +2,7 @@ package com.edufelizardo1.forum.service;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import com.edufelizardo1.forum.repository.CursoRepository;
 import com.edufelizardo1.forum.repository.TopicoRepository;
 import com.edufelizardo1.forum.service.dto.DetalhesDoTopicoDTO;
 import com.edufelizardo1.forum.service.dto.TopicoDTO;
+import com.edufelizardo1.forum.service.form.AtualizacaoTopicoForm;
 import com.edufelizardo1.forum.service.form.TopicoForm;
 
 @Service
@@ -46,5 +48,15 @@ public class TopicosService {
 	public DetalhesDoTopicoDTO detalhar(Long id) {
 		Topico topico = topicoRepository.getOne(id);
 		return new DetalhesDoTopicoDTO(topico);
+	}
+	
+	public ResponseEntity<TopicoDTO> atualizar(Long id, AtualizacaoTopicoForm form) {
+		Optional<Topico> optional = topicoRepository.findById(id);
+		if (optional.isPresent()) {
+			Topico topico = form.atualizar(id, topicoRepository);
+			return ResponseEntity.ok(new TopicoDTO(topico));
+		}
+		
+		return ResponseEntity.notFound().build();
 	}
 }
