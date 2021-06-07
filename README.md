@@ -7,4 +7,4 @@ Spring Boot API REST: Forum
 
 > Status do Projeto: Em desenvolvimento :warning:
 
-- [ ] Desenvolver uma API REST, contendo os métodos HTTP básicos (GET, POST, PUT, DELETE) para um sistema de forum.
+- [ ] Desenvolver a segurança da API utilizando Spring Security, para um sistema de forum.
